@@ -1,0 +1,21 @@
+# GMK104 Keyboard LCD - udev rules for Linux
+# Place this file in /etc/udev/rules.d/99-gmk104.rules
+# Then run:
+#   sudo udevadm control --reload-rules
+#   sudo udevadm trigger
+#
+# Make sure your user is in the 'plugdev' group (or adjust GROUP below):
+#   sudo usermod -a -G plugdev $USER
+#   (log out and back in for group changes to take effect)
+
+# Zuoya GMK104 keyboard (adjust VID/PID as needed)
+# VID 0x320f is common for Zuoya keyboards
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="320f", MODE="0666", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="320f", MODE="0666", GROUP="plugdev"
+
+# Alternative: If your keyboard has a different VID, add rules here
+# SUBSYSTEM=="hidraw", ATTRS{idVendor}=="XXXX", ATTRS{idProduct}=="YYYY", MODE="0666", GROUP="plugdev"
+
+# Broader rule if you're having trouble identifying the exact VID/PID:
+# (Comment out the above and use this temporarily for testing)
+# SUBSYSTEM=="hidraw", MODE="0666"
