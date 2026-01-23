@@ -1,3 +1,7 @@
+[workspace]
+members = [".", "pet-daemon"]
+resolver = "2"
+
 [package]
 name = "gmk104ctl"
 version = "0.1.0"

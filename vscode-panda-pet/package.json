@@ -1,0 +1,64 @@
+{
+  "name": "panda-pet",
+  "displayName": "Panda Pet",
+  "description": "A cute panda pet that lives on your GMK104 keyboard LCD",
+  "version": "0.1.0",
+  "publisher": "panda-pet",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pandaPet.startBreak",
+        "title": "Panda Pet: Start Break"
+      },
+      {
+        "command": "pandaPet.endBreak",
+        "title": "Panda Pet: End Break"
+      },
+      {
+        "command": "pandaPet.showStatus",
+        "title": "Panda Pet: Show Status"
+      }
+    ],
+    "configuration": {
+      "title": "Panda Pet",
+      "properties": {
+        "pandaPet.socketPath": {
+          "type": "string",
+          "default": "/tmp/panda-pet.sock",
+          "description": "Path to the pet daemon Unix socket"
+        },
+        "pandaPet.pollingInterval": {
+          "type": "number",
+          "default": 2000,
+          "description": "How often to send diagnostics to the daemon (ms)"
+        },
+        "pandaPet.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the panda pet"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
