@@ -1,4 +1,4 @@
-# valencia-hack-n-roll
+# gmk104-linux
 
 CLI tool for uploading images and GIFs to the GMK104 keyboard LCD.
 
